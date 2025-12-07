@@ -10,7 +10,7 @@ class PsMirrorServer < Formula
   license "MIT"
   head "https://github.com/hex/PS-Mirror.git", branch: "main"
 
-  depends_on "bun"
+  depends_on "oven-sh/bun/bun"
 
   def install
     # Install server files to libexec
@@ -24,7 +24,7 @@ class PsMirrorServer < Formula
     # Create wrapper script
     (bin/"ps-mirror-server").write <<~EOS
       #!/bin/bash
-      exec "#{Formula["bun"].opt_bin}/bun" "#{libexec}/server.js" "$@"
+      exec "#{Formula["oven-sh/bun/bun"].opt_bin}/bun" "#{libexec}/server.js" "$@"
     EOS
   end
 
